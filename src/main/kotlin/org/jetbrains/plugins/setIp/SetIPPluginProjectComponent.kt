@@ -7,13 +7,23 @@ package org.jetbrains.plugins.setIp
 
 import com.intellij.debugger.impl.DebuggerManagerListener
 import com.intellij.debugger.impl.DebuggerSession
+import com.intellij.ide.plugins.PluginManagerConfigurable
+import com.intellij.notification.Notification
+import com.intellij.notification.NotificationType
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
 import com.intellij.xdebugger.impl.XDebugSessionImpl
 
 class SetIPStartupActivity : StartupActivity {
     override fun runActivity(project: Project) {
-        //instrument()
+
+        Notification(
+                "",
+                "SetIP rename and release notification",
+                "SetIP Plugin has been released with new name Jump to Line. Please <b>remove SetIP</b> plugin and install <b>JumpToLine plugin</b> using <a href=\"\">MarketPlace</a> to take further updates.",
+                NotificationType.INFORMATION
+        ).also { it.setListener { _, _  -> PluginManagerConfigurable.showPluginConfigurable(project) } }
+                .notify(project)
 
         val debuggerListener = object : DebuggerManagerListener {
             override fun sessionAttached(session: DebuggerSession?) {
