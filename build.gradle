@@ -22,13 +22,16 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-  // Define IntelliJ Platform API version to use for building this plugin
-  version '2020.1'
+  version '2020.2'
   plugins 'java'
 }
 
 patchPluginXml {
   untilBuild = '211.*'
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
+	kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 }
 
 sourceCompatibility = 1.8
