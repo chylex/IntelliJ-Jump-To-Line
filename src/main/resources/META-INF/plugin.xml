@@ -1,7 +1,7 @@
 <idea-plugin>
-  <id>org.jetbrains.jumpToLine</id>
+  <id>JumpToLine-chylex</id>
   <name>Jump to Line</name>
-  <version>0.1.5</version>
+  <version>chylex-1</version>
   <vendor email="igor.yakovlev@jetbrains.com" url="jetbrains.com">JetBrains</vendor>
 
   <depends>com.intellij.modules.lang</depends>
